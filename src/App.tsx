@@ -4,8 +4,17 @@ import s from "./App.module.css";
 
 const textList = ["Item 1", "Item 2", "Item 3"];
 
-const customListItems = textList.map((el) => (
-  <span data-value={el} style={{ color: "red" }}>
+const customListItems = textList.map((el, index) => (
+  <span
+    data-value={el}
+    style={{
+      color: "red",
+      display: "flex",
+      flexDirection: "column",
+      gap: "5px",
+    }}
+  >
+    <span>custom el {index}</span>
     {el}
   </span>
 ));
