@@ -1,0 +1,96 @@
+.dropdown {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #f9fafb;
+  border-radius: 8px;
+  position: relative;
+  line-height: 17.5px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: all 0.15s linear;
+  font-size: 14px;
+  color: #999999;
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 16px;
+  margin: auto 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: black transparent transparent transparent;
+  transition: all 0.15s linear;
+}
+
+.toggledDropdown::after {
+  transform: rotate(180deg);
+}
+
+.toggledDropdown {
+  border-radius: 8px 8px 0 0;
+  border-color: #666666;
+}
+
+.dropdownList {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 10px 0;
+  transform: scaleY(0);
+  transition: all 0.15s linear;
+  transform-origin: top;
+  border-radius: 0 0 8px 8px;
+  background-color: inherit;
+  border: inherit;
+  z-index: 2;
+}
+
+.toggledDropdown .dropdownList {
+  transform: scaleY(1);
+}
+
+.input {
+  border-radius: 6px;
+  padding: 4px 8px;
+  width: calc(100% - 20px);
+  border: 1px solid #d1d5db99;
+  background-color: #f9fafb99;
+  font-size: 14px;
+  margin: 0 10px;
+  margin-bottom: 8px;
+}
+
+.listItem {
+  width: 100%;
+  transition: all 0.15s linear;
+  cursor: pointer;
+  padding: 4px 16px;
+}
+
+.listItem:hover {
+  background-color: #f5f5f5;
+}
+
+.listItemContent {
+  width: 100%;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 21px;
+}
+
+.emptyMessage {
+  font-size: 12px;
+  color: black;
+  text-align: center;
+}
