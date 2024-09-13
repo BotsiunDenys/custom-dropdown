@@ -3,12 +3,13 @@ import s from "./Dropdown.module.css";
 import OutsideClickChecker from "../OutsideClickChecker/OutsideClickChecker";
 
 interface Props {
-  className?: string;
-  label: string;
-  dropdownList: React.ReactNode[] | string[];
-  value?: string | null;
-  onChange?: (value: string | null) => void;
+  className?: string; // for customizing dropdown
+  label: string; // placeholder for dropdown
+  dropdownList: React.ReactNode[] | string[]; // values that can be either string or component
+  value?: string | null; // value by default (as in default select)
+  onChange?: (value: string | null) => void; // onChange fn (as in default select)
   searchFunction?: (
+    // custom search fn
     searchValue: string,
     setDropdownValues: React.Dispatch<
       React.SetStateAction<React.ReactNode[] | string[]>
@@ -34,6 +35,7 @@ const Dropdown = ({
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     if (searchValue.length) {
+      // calls custom search fn if it is passed or filters values if not
       if (searchFunction) {
         searchFunction(e.target.value, setDropdownValues);
         return;
@@ -55,7 +57,7 @@ const Dropdown = ({
     e: React.MouseEvent<HTMLLIElement, MouseEvent>
   ) => {
     let value: string | null = null;
-
+    // sets value of selected element is it is component - gets value from data-value attribute
     if (typeof item === "string") {
       value = item;
     } else {
@@ -95,7 +97,7 @@ const Dropdown = ({
           {dropdownValues.length ? (
             dropdownValues.map((item, index) => (
               <li
-                data-value={
+                data-value={ // setting data value attribute in case we have component as option
                   typeof item === "string"
                     ? item
                     : (item as any).props["data-value"]

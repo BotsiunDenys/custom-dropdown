@@ -6,7 +6,7 @@ const textList = ["Item 1", "Item 2", "Item 3"];
 
 const customListItems = textList.map((el, index) => (
   <span
-    data-value={el}
+    data-value={el} // data value attribute is set for having string value if we pass component as option
     style={{
       color: "red",
       display: "flex",
@@ -27,6 +27,7 @@ const App = () => {
     null
   );
 
+  // simulation of async function for custom search
   const customSearch = (
     searchValue: string,
     setDropdownValues: React.Dispatch<
