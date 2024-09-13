@@ -76,6 +76,8 @@ const Dropdown = ({
     /* outsideclickchecker used for closing dropdown if it is out of focus */
     <OutsideClickChecker actionFn={() => setIsOpen(false)}>
       <div
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setIsOpen(false)}
         onClick={() => setIsOpen((prev) => !prev)}
         className={`${s.dropdown} ${className ? className : ""} ${
           isOpen ? s.toggledDropdown : ""
